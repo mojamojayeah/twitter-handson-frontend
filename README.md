@@ -17,3 +17,17 @@ yarn
 ```
 yarn start
 ```
+# react使い方
+## html的なやつ
+```
+<View>
+<Text>
+<TouchableOpacity>
+<ScrollView>
+```
+## 独自のやつ
+```
+useState
+useCallback
+useEffect
+```
