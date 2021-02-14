@@ -2,19 +2,18 @@ import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
-import HelloScreen from '../screens/HelloScreen'
-// import HomeScreen from '../screens/HomeScreen'
+//import HelloScreen from '../screens/HelloScreen'
+import HomeScreen from '../screens/HomeScreen'
 import UserScreen from '../screens/UserScreen'
+import MyScreen from '../screens/MyScreen'
 
 const Stack = createStackNavigator()
 
-// ### レッスン2: ホームスタックで表示する画面を変えよう ###
-// 1. "HelloScreen"ではなく、"HomeScreen"を表示するように変えてみよう。
 const HomeStackNavigator = () => (
   <Stack.Navigator initialRouteName="Main">
     <Stack.Screen
       name="Main"
-      component={HelloScreen}
+      component={HomeScreen}
       options={{
         headerTitle: 'ホーム',
         headerBackTitleVisible: false,
@@ -35,6 +34,18 @@ const UserStackNavigator = () => (
     />
   </Stack.Navigator>
 )
+const MyStackNavigator = () => (
+  <Stack.Navigator initialRouteName="Main">
+    <Stack.Screen
+      name="Main"
+      component={MyScreen}
+      options={{
+        headerTitle: '自分',
+        headerBackTitleVisible: false,
+      }}
+    />
+  </Stack.Navigator>
+)
 
 const Tab = createBottomTabNavigator()
 
@@ -50,11 +61,15 @@ const TabNavigator = () => (
         if (route.name === 'UserTab') {
           return <MaterialCommunityIcons name="account" size={24} />
         }
+        if (route.name === 'MyTab') {
+          return <MaterialCommunityIcons name="account" size={24} />
+        }
       },
     })}
   >
     <Tab.Screen name="HomeTab" component={HomeStackNavigator} />
     <Tab.Screen name="UserTab" component={UserStackNavigator} />
+    <Tab.Screen name="MyTab" component={MyStackNavigator} />
   </Tab.Navigator>
 )
 
